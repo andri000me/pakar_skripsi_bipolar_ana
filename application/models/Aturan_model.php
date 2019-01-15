@@ -14,10 +14,10 @@ class Aturan_model extends CI_Model
 
     function get_all()
     {
-        $this->db->select('tb_aturan.id_aturan, tb_aturan.id_penyakit, tb_aturan.id_gejala, tb_gejala.nama_gejala, tb_penyakit.nama_penyakit');
+        $this->db->select('tb_aturan.id_aturan, tb_aturan.id_penyakit, tb_aturan.id_gejala, tb_gejala.nama_gejala, tb_penyakit.nama_penyakit, (SUBSTR(tb_aturan.id_aturan, 3, 4) * 1) AS sortcol');
         $this->db->join('tb_penyakit', 'tb_penyakit.id_penyakit = tb_aturan.id_penyakit');
         $this->db->join('tb_gejala', 'tb_gejala.id_gejala = tb_aturan.id_gejala');
-        $this->db->order_by($this->id, $this->order);
+        $this->db->order_by('sortcol', $this->order);
         return $this->db->get($this->table)->result();
     }
 

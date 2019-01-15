@@ -46,27 +46,36 @@
                                     <small><?php echo form_error('nama_gejala') ?></small>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="pertanyaan" class="col-sm-2 control-label">Pertanyaan <i style="color:red">*</i></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="pertanyaan" id="pertanyaan" placeholder="" maxlength="100" value="<?php echo $pertanyaan; ?>" />
+                                    <small><?php echo form_error('pertanyaan') ?></small>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="fase_gejala" class="col-sm-2 control-label">Fase<i style="color:red">*</i></label>
                                 <div class="col-sm-4">
                                     <select class="form-control" name="fase_gejala" required>
                                       <option value="" selected disabled>--Pilih Fase--</option>
-                                      <option value="1">Pertama</option>
-                                      <option value="2">Kedua</option>
+                                      <option value="1" <?=($fase_gejala == 1) ? "selected" : "" ?>>Pertama</option>
+                                      <option value="2" <?=($fase_gejala == 2) ? "selected" : "" ?>>Kedua</option>
                                   </select>
                                   <small><?php echo form_error('fase') ?></small>
                               </div>
                           </div>
                           <div class="form-group">
-                                <label for="bobot_gejala" class="col-sm-2 control-label">Bobot gejala <i style="color:red">*</i></label>
-                                <div class="col-sm-2">
-                                    <input type="text" class="form-control" name="bobot_gejala" id="bobot_gejala" placeholder="" value="<?php echo $bobot_gejala; ?>" />
-                                    <small><?php echo form_error('bobot_gejala') ?></small>
-                                </div>
+                            <label for="bobot_gejala" class="col-sm-2 control-label">Bobot gejala <i style="color:red">*</i></label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" name="bobot_gejala" id="bobot_gejala" placeholder="" value="<?php echo $bobot_gejala; ?>" />
+                                <small><?php echo form_error('bobot_gejala') ?></small>
                             </div>
-                          <div class="clearfix"></div>
-                          <hr>
-                          <div class="row">
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="row">
                             <div class="col-lg-8 col-lg-push-2">
                                 <div class="action">
                                     <input type="submit" name="save" value="Simpan" class="btn btn-success">

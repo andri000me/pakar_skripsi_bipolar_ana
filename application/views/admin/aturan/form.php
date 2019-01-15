@@ -3,7 +3,7 @@
   <h1><i class="fa fa-th"></i>&nbsp; <?=$title?></h1>
   <ol class="breadcrumb">
     <li><a href="<?php echo site_url ('admin/dashboard');?>"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="<?php echo site_url ('admin/gejala');?>"><?=$title?></a></li>
+    <li><a href="<?php echo site_url ('admin/aturan');?>"><?=$title?></a></li>
     <li class="active"><?=$subtitle?></li>
 </ol>
 </section>
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="varchar" class="col-sm-2 control-label">Kode <i style="color:red">*</i></label>
+                                <label for="id_aturan" class="col-sm-2 control-label">Kode <i style="color:red">*</i></label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" name="id_aturan" id="id_aturan" readonly="readonly" value="<?php echo $id_aturan; ?>" />
                                     <small><?php echo form_error('id_aturan') ?></small>
@@ -40,13 +40,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="id_gejala" class="col-sm-2 control-label">Nama Penyakit <i style="color:red">*</i></label>
+                                <label for="id_penyakit" class="col-sm-2 control-label">Nama Penyakit <i style="color:red">*</i></label>
                                 <div class="col-sm-6">
                                     <select class="form-control" name="id_penyakit" id="chosen1" data-placeholder="Pilih penyakit...">
                                         <option value=""></option>
                                         <?php foreach ($dt_penyakit as $penyakit) {
                                             if ($penyakit->id_penyakit === $id_penyakit) { ?>
-                                                <option value='<?php echo $penyakit->id_penyakit ?>selected'><?php echo $penyakit->nama_penyakit?></option>
+                                                <option value='<?php echo $penyakit->id_penyakit ?>' selected><?php echo $penyakit->nama_penyakit?></option>
                                             <?php }else{ ?>
                                               <option value='<?php echo $penyakit->id_penyakit ?>'><?php echo $penyakit->nama_penyakit?></option>
                                       <?php } ?>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="id_penyakit" class="col-sm-2 control-label">Nama Gejala<i style="color:red">*</i></label>
+                                <label for="id_gejala" class="col-sm-2 control-label">Nama Gejala<i style="color:red">*</i></label>
                                 <div class="col-sm-6">
                                     <select class="form-control" name="id_gejala" id="chosen" data-placeholder="Pilih gejala...">
                                         <option value=""></option>
@@ -81,7 +81,7 @@
                                         <?php
                                         if ($id_aturan) {
                                             ?>
-                                            <a href="<?=base_url().'/admin/gejala'?>" class="btn btn-default">Kembali</a>
+                                            <a href="<?=base_url().'/admin/aturan'?>" class="btn btn-default">Kembali</a>
                                             <?php
                                         } else {
                                             ?>

@@ -1,10 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Gejala_model extends CI_Model
+class Pemeriksaan_model extends CI_Model
 {
 
-    public $table = 'tb_gejala';
-    public $id = 'id_gejala';
+    public $table = 'tb_diagnosa';
+    public $id = 'id_diagnosa';
     public $order = 'ASC';
 
     function __construct()
@@ -14,13 +14,15 @@ class Gejala_model extends CI_Model
 
     function get_all()
     {
-        $this->db->select('tb_gejala.*, (SUBSTR(tb_gejala.id_gejala, 3, 4) * 1) AS sortcol');
-        $this->db->order_by('sortcol', $this->order);
+        $this->db->select('tb_diagnosa.*, tb_pasien.nama_pasien, tb_user.nama_user, tb_user.level');
+        $this->db->join('tb_pasien', 'tb_pasien.id_pasien = tb_diagnosa.id_pasien');
+        $this->db->join('tb_user', 'tb_user.id_user = tb_diagnosa.id_user');
+        $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }
 
     public function get_data() {
-        $query = $this->db->get('tb_gejala');
+        $query = $this->db->get('tb_diagnosa');
         return $query->result();
     }
 
@@ -52,8 +54,7 @@ class Gejala_model extends CI_Model
 
     // get search total rows
     function search_total_rows($keyword = NULL) {
-        $this->db->like('id_gejala', $keyword);
-        $this->db->or_like('nama_gejala', $keyword);
+        $this->db->like('id_diagnosa', $keyword);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -61,8 +62,7 @@ class Gejala_model extends CI_Model
     // get search data with limit
     function search_index_limit($limit, $start = 0, $keyword = NULL) {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id_gejala', $keyword);
-        $this->db->or_like('nama_gejala', $keyword);
+        $this->db->like('id_diagnosa', $keyword);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
@@ -86,6 +86,14 @@ class Gejala_model extends CI_Model
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
 
+    }
+
+    function cekGejalaExist($id,$idg){
+        $this->db->select('*');
+        $this->db->from('tb_cek_diagnosa');
+        $this->db->where('id_diagnosa', $id);
+        $this->db->where('id_gejala', $idg);
+        return $this->db->get();
     }
 
 }

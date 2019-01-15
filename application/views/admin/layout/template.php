@@ -146,7 +146,7 @@
           <li class="header">DIAGNOSA</li>
 
           <li class=<?=($title == "Pemeriksaan") ? "active" : "" ?>>
-            <a href="#">
+            <a href="<?php echo site_url ('admin/pemeriksaan');?>">
               <i class="fa fa-stethoscope"></i> <span>Form Pemeriksaan</span>
             </a>
           </li>

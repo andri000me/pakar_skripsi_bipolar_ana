@@ -31,10 +31,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
-                            <th>Nama Gejala</th>
-                            <th>Bobot Gejala</th>
+                            <th>Tanggal</th>
+                            <th>Nama Pasien</th>
+                            <th>Lama Keluhan</th>
+                            <th>User</th>
                             <th width="10%">Action</th>
+                            <th width="10%">Diagnosa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,18 +49,24 @@
                                 ?>
                                 <tr>
                                     <td><?php echo ++$start ?></td>
-                                    <td><?php echo $data->id_gejala ?></td>
-                                    <td><?php echo $data->nama_gejala ?></td>
-                                    <td><?php echo $data->bobot_gejala ?></td>
+                                    <td><?php echo $data->id_diagnosa ?></td>
+                                    <td><?php echo $data->lama_keluhan." Hari" ?></td>
+                                    <td><?php echo $data->nama_user ?></td>
                                     <td>
                                         <?php
 
                                         echo ' ';
-                                        echo anchor(site_url('admin/gejala/update/'.$data->id_gejala),'<button class="btn btn-warning btn-xs" title="Edit"><i class="fa fa-edit"></i></button>');
+                                        echo anchor(site_url('admin/pemeriksaan/update/'.$data->id_diagnosa),'<button class="btn btn-warning btn-xs" title="Edit"><i class="fa fa-edit"></i></button>');
                                         if ($this->session->userdata('login')['level'] == 'admin') {
                                             echo ' ';
-                                            echo anchor(site_url('admin/gejala/delete/'.$data->id_gejala),'<button class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash"></i></button>','onclick="javascript: return confirm(\'Apakah anda yakin data ini akan dihapus ?\')"');
+                                            echo anchor(site_url('admin/pemeriksaan/delete/'.$data->id_diagnosa),'<button class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash"></i></button>','onclick="javascript: return confirm(\'Apakah anda yakin data ini akan dihapus ?\')"');
                                         }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                        echo ' '; 
+                                        echo anchor(site_url('admin/pemeriksaan/hasi_pemeriksaan/'.$data->id_diagnosa),'<button class="btn btn-outline btn-success btn-xs" title="Edit"><i class="fa fa-stethoscope"></i>&nbsp; Hasil</button>'); 
                                         ?>
                                     </td>
                                 </tr>
@@ -76,11 +84,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6"></td>
+                            <td colspan="4"></td>
                         </tr>
                         <tr>
-                            <td colspan="6">
-                                <a href="<?php echo site_url('admin/gejala/create');?>" class="btn btn-info" type="button"><span class="fa fa-plus"></span> Tambah Data</a>
+                            <td colspan="4">
+                                <a href="<?php echo site_url('admin/pemeriksaan/create');?>" class="btn btn-info" type="button"><span class="fa fa-plus"></span> Tambah Data</a>
                             </td>
                         </tr>
                     </tfoot>

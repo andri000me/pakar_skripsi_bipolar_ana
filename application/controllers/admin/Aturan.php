@@ -118,6 +118,8 @@ class Aturan extends CI_Controller
                 'id_aturan' => $row->id_aturan,
                 'id_gejala' => $row->id_gejala,
                 'id_penyakit' => $row->id_penyakit,
+                'dt_gejala' => $this->gejala_model->get_all(),
+                'dt_penyakit' => $this->penyakit_model->get_all(),
             );
 
             $data['title'] = 'Data Aturan';

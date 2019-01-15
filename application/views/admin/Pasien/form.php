@@ -51,8 +51,8 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" name="jenis_kelamin" required="">
                                         <option value="" disabled="" selected="">--Pilih Gender--</option>
-                                        <option value="laki-laki">Laki - Laki</option>
-                                        <option value="perempuan">Perempuan</option>
+                                        <option value="laki-laki" <?=($jenis_kelamin == 'laki-laki') ? "selected" : "" ?>>Laki - Laki</option>
+                                        <option value="perempuan" <?=($jenis_kelamin == 'perempuan') ? "selected" : "" ?>>Perempuan</option>
                                     </select>
                                 </div>
                             </div>

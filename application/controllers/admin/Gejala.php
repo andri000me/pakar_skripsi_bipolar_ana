@@ -57,6 +57,7 @@ class Gejala extends CI_Controller
             'button' => 'Tambah',
             'action' => site_url('admin/gejala/create_action'),
             'nama_gejala' => set_value('nama_gejala'),
+            'pertanyaan' => set_value('pertanyaan'),
             'fase_gejala' => set_value('fase_gejala'),
             'bobot_gejala' => set_value('bobot_gejala'),
             'id_gejala' => $kode1,
@@ -94,6 +95,7 @@ class Gejala extends CI_Controller
             $data = array(
                 'id_gejala' => $this->input->post('id_gejala',TRUE),
                 'nama_gejala' => $this->input->post('nama_gejala',TRUE),
+                'pertanyaan' => $this->input->post('pertanyaan',TRUE),
                 'fase_gejala' => $this->input->post('fase_gejala',TRUE),
                 'bobot_gejala' => $this->input->post('bobot_gejala',TRUE),
             );
@@ -116,6 +118,7 @@ class Gejala extends CI_Controller
                 'fase_gejala' => $row->fase_gejala,
                 'bobot_gejala' => $row->bobot_gejala,
                 'nama_gejala' => $row->nama_gejala,
+                'pertanyaan' => $row->pertanyaan,
             );
 
             $data['title'] = 'Data Gejala';
@@ -140,6 +143,7 @@ class Gejala extends CI_Controller
 
             $data = array(
                 'nama_gejala' => $this->input->post('nama_gejala',TRUE),
+                'pertanyaan' => $this->input->post('pertanyaan',TRUE),
                 'fase_gejala' => $this->input->post('fase_gejala',TRUE),
                 'bobot_gejala' => $this->input->post('bobot_gejala',TRUE),
             );
@@ -169,6 +173,7 @@ class Gejala extends CI_Controller
 
         $this->form_validation->set_rules('id_gejala', 'Kode Gejala', 'trim|required');
         $this->form_validation->set_rules('nama_gejala', 'Nama Gejala', 'trim|required');
+        $this->form_validation->set_rules('pertanyaan', 'Kalimat Pertanyaan Gejala', 'trim|required');
         $this->form_validation->set_rules('fase_gejala', 'Fase Gejala', 'trim|required');
         $this->form_validation->set_rules('bobot_gejala', 'Bobot Gejala', 'trim|required');
 
