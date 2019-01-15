@@ -45,12 +45,12 @@
                                     <select class="form-control" name="id_penyakit" id="chosen1" data-placeholder="Pilih penyakit...">
                                         <option value=""></option>
                                         <?php foreach ($dt_penyakit as $penyakit) {
-                                            if ($penyakit->id_penyakit === $id_penyakit) {
-                                                echo "<option value='".$penyakit->id_penyakit."' selected>".$penyakit->nama_penyakit."</option>";
-                                            }else{
-                                                echo "<option value='".$penyakit->id_penyakit."'>".$penyakit->nama_penyakit."</option>";
-                                            }
-                                        }?>
+                                            if ($penyakit->id_penyakit === $id_penyakit) { ?>
+                                                <option value='<?php echo $penyakit->id_penyakit ?>selected'><?php echo $penyakit->nama_penyakit?></option>
+                                            <?php }else{ ?>
+                                              <option value='<?php echo $penyakit->id_penyakit ?>'><?php echo $penyakit->nama_penyakit?></option>
+                                      <?php } ?>
+                                            <?php } ?>
                                     </select>
                                     <small><?php echo form_error('id_penyakit') ?></small>
                                 </div>
